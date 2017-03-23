@@ -9,6 +9,8 @@ var relay;
 
 var celcius;
 
+app.use(express.static('public'));
+
 board.on("ready", function () {
     relay = new five.Relay(13);
     temperature = new five.Thermometer({
