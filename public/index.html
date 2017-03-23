@@ -32,8 +32,11 @@
                 <button id="temp-button" class="btn btn-default">Temperatura</button>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-offset-4 col-md-4">
+        <div class="row" style="padding: 20px">
+            <div class="col-md-offset-5 col-md-2">
+                <div>
+                    <h2 id="temp-num"></h2>
+                </div>
             </div>
         </div>
     </div>
@@ -47,7 +50,9 @@
 
             var http = function(url) {
                    $.get( url, function( data ) {
-                        $( ".result" ).html( data );
+                       if(data){
+                           $( "#temp-num" ).html( data );
+                       }
                         console.log( "----->>>>" + url );
                     });
             }
@@ -55,15 +60,15 @@
             var desligar = $('#desligar-button');
             var ligar = $('#ligar-button')
             temp.on('click', function(){
-                http("")
+                http("/temperatura")
                 console.log('temp')
             })
             desligar.on('click', function(){
-                http("")
+                http("/desligar")
                 console.log('desligar')
             })
             ligar.on('click', function(){
-                http("")
+                http("/ligar")
                 console.log('ligar')
             })
         })
